@@ -11,7 +11,7 @@ $(document).ready(function() {
     let name = $('#name-search').val();
     $('#keyword-search').val("");
     $('#name-search').val("");
-    $('#search-results').val("");
+    $('#search-results').text("");
 
 
     let doctorSearch = new DoctorSearch();

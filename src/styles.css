@@ -19,6 +19,22 @@ form {
   margin-top: 20px;
 }
 
+label {
+  font-weight: bold;
+}
+
+input {
+  margin-bottom: 10px;
+}
+button {
+  margin-top: 10px;
+}
+
+.card-header {
+  font-weight: bold;
+  font-size: 24px;
+}
+
 .strong {
   font-weight: bold;
 }
