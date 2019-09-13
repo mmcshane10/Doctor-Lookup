@@ -13,7 +13,6 @@ $(document).ready(function() {
     $('#name-search').val("");
     $('#search-results').text("");
 
-
     let doctorSearch = new DoctorSearch();
     let promise = doctorSearch.getDoctorResults(keyword, name);
 
@@ -61,19 +60,10 @@ $(document).ready(function() {
           $(`#newpatients${i}`).html(`<p><span class='strong'>Accepting New Patients:</span> ${newPatients} </p>`);
 
           $(`#profile${i}`).html(`<p>${body.data[i].profile.bio}</p>`)
+        }
 
-          // $(`#company${i}`).html(`<p><span class='strong'>Company:</span> <a href=${body.data[i].practices[i].company_url}>${body.data[i].practices[i].company}</a></p>`);
-          // $(`#location${i}`).html(`<p><span class='strong'>Location:</span> ${body.data[i].practices[i].location}</p>`);
-          // $(`#url${i}`).html(`<p><span class='strong'><a href=${body.data[i].practices[i].url}>View Job Posting</a></span></p>`);
-          // $(`#description${i}`).html(body.data[i].practices[i].description);
-      }
-
-
-
-
-    }, function(error) {
-
+      }, function(error) {
+        $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+      });
     });
   });
-
-});
