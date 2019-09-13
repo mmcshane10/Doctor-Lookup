@@ -27,16 +27,24 @@ $(document).ready(function() {
           <div class="card-header" id="heading${i}" data-toggle="collapse" data-target="#collapse${i}" aria-expanded="true" aria-controls="collapseOne"><span id=name${i}></div>
           <div id="collapse${i}" class="collapse show" aria-labelledby="heading${i}" data-parent="#accordion">
           <div class="card-body">
-          <div id=company${i}></div>
-          <div id=location${i}></div>
-          <div id=description${i}></div>
+          <div id=address${i}></div>
+          <div id=phone${i}></div>
+          <div id=newpatients{i}></div>
           <div id=url${i}></div>
           </div>
           </div>
           </div>
           </div>`);
 
-          $(`#name${i}`).html(`${body.data[i].profile.first_name} ${body.data[i].profile.last_name}`);
+          $(`#name${i}`).html(`${body.data[i].profile.first_name} ${body.data[i].profile.last_name}, ${body.data[i].profile.title}`);
+
+          $(`#address${i}`).html(`<p><span class='strong'>Address:</span> ${body.data[i].practices[0].visit_address.street}, ${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.state}, ${body.data[i].practices[0].visit_address.zip}`);
+
+          $(`#phone${i}`).html(`<p><span class='strong'>Phone:</span> ${body.data[i].practices[0].phones[1].number}</p>`);
+
+          $(`#newpatients${i}`).html
+
+
           // $(`#company${i}`).html(`<p><span class='strong'>Company:</span> <a href=${body.data[i].practices[i].company_url}>${body.data[i].practices[i].company}</a></p>`);
           // $(`#location${i}`).html(`<p><span class='strong'>Location:</span> ${body.data[i].practices[i].location}</p>`);
           // $(`#url${i}`).html(`<p><span class='strong'><a href=${body.data[i].practices[i].url}>View Job Posting</a></span></p>`);
