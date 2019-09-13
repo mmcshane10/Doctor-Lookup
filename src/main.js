@@ -20,6 +20,7 @@ $(document).ready(function() {
     promise.then(function(response) {
       const body = JSON.parse(response);
       console.log(body.meta.total);
+      let newPatients
       for (let i = 0; i < body.data.length; i++) {
         $("#search-results").append(
           `<div id="accordion">
@@ -29,21 +30,28 @@ $(document).ready(function() {
           <div class="card-body">
           <div id=address${i}></div>
           <div id=phone${i}></div>
-          <div id=newpatients{i}></div>
-          <div id=url${i}></div>
+          <div id=newpatients${i}></div>
+          <div id=profile${i}></div>
           </div>
           </div>
           </div>
           </div>`);
 
+          if (body.data[i].practices[0].accepts_new_patients === true) {
+            newPatients = "Yes"
+          } else {
+            newPatients = "No"
+          }
+
           $(`#name${i}`).html(`${body.data[i].profile.first_name} ${body.data[i].profile.last_name}, ${body.data[i].profile.title}`);
 
           $(`#address${i}`).html(`<p><span class='strong'>Address:</span> ${body.data[i].practices[0].visit_address.street}, ${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.state}, ${body.data[i].practices[0].visit_address.zip}`);
 
-          $(`#phone${i}`).html(`<p><span class='strong'>Phone:</span> ${body.data[i].practices[0].phones[1].number}</p>`);
+          $(`#phone${i}`).html(`<p><span class='strong'>Phone:</span> ${body.data[i].practices[0].phones[0].number}</p>`);
 
-          $(`#newpatients${i}`).html
+          $(`#newpatients${i}`).html(`<p><span class='strong'>Accepting New Patients:</span> ${newPatients} </p>`);
 
+          $(`#profile${i}`).html(`<p>${body.data[i].profile.bio}</p>`)
 
           // $(`#company${i}`).html(`<p><span class='strong'>Company:</span> <a href=${body.data[i].practices[i].company_url}>${body.data[i].practices[i].company}</a></p>`);
           // $(`#location${i}`).html(`<p><span class='strong'>Location:</span> ${body.data[i].practices[i].location}</p>`);
