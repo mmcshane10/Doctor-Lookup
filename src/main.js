@@ -20,11 +20,11 @@ $(document).ready(function() {
     promise.then(function(response) {
       const body = JSON.parse(response);
       console.log(body.meta.total);
-      for (let i = 0; i < body.meta.total; i++) {
+      for (let i = 0; i < body.data.length; i++) {
         $("#search-results").append(
           `<div id="accordion">
           <div class="card bg-light mb-3">
-          <div class="card-header" id="heading${i}" data-toggle="collapse" data-target="#collapse${i}" aria-expanded="true" aria-controls="collapseOne"><span id=title${i}></div>
+          <div class="card-header" id="heading${i}" data-toggle="collapse" data-target="#collapse${i}" aria-expanded="true" aria-controls="collapseOne"><span id=name${i}></div>
           <div id="collapse${i}" class="collapse show" aria-labelledby="heading${i}" data-parent="#accordion">
           <div class="card-body">
           <div id=company${i}></div>
@@ -35,6 +35,12 @@ $(document).ready(function() {
           </div>
           </div>
           </div>`);
+
+          $(`#name${i}`).html(`${body.data[i].profile.first_name} ${body.data[i].profile.last_name}`);
+          // $(`#company${i}`).html(`<p><span class='strong'>Company:</span> <a href=${body.data[i].practices[i].company_url}>${body.data[i].practices[i].company}</a></p>`);
+          // $(`#location${i}`).html(`<p><span class='strong'>Location:</span> ${body.data[i].practices[i].location}</p>`);
+          // $(`#url${i}`).html(`<p><span class='strong'><a href=${body.data[i].practices[i].url}>View Job Posting</a></span></p>`);
+          // $(`#description${i}`).html(body.data[i].practices[i].description);
       }
 
 
