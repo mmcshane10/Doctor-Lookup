@@ -28,6 +28,7 @@ $(document).ready(function() {
           <div class="card-header" id="heading${i}" data-toggle="collapse" data-target="#collapse${i}" aria-expanded="true" aria-controls="collapseOne"><span id=name${i}></div>
           <div id="collapse${i}" class="collapse show" aria-labelledby="heading${i}" data-parent="#accordion">
           <div class="card-body">
+          <div id=image${i} class="image"></div>
           <div id=address${i}></div>
           <div id=phone${i}></div>
           <div id=newpatients${i}></div>
@@ -42,6 +43,8 @@ $(document).ready(function() {
           } else {
             newPatients = "No"
           }
+
+          $(`#image${i}`).html(`<img class="card-img-left" src=${body.data[i].profile.image_url} alt="Card image cap">`)
 
           $(`#name${i}`).html(`${body.data[i].profile.first_name} ${body.data[i].profile.last_name}, ${body.data[i].profile.title}`);
 
