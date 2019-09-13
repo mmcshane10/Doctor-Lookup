@@ -2,10 +2,11 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
-import { } from './backend.js';
+import { DoctorSearch } from './backend.js';
 
 $(document).ready(function() {
-  $('#doctor-search').click(function() {
+  $('#doctor-search').submit(function() {
+    event.preventDefault();
     let keyword = $('#keyword-search').val();
     let name = $('#name-search').val();
     $('#keyword-search').val("");
@@ -17,6 +18,7 @@ $(document).ready(function() {
 
     promise.then(function(response) {
       const body = JSON.parse(response);
+      console.log(body);
 
     }, function(error) {
 
