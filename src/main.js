@@ -12,6 +12,7 @@ $(document).ready(function() {
     $('#keyword-search').val("");
     $('#name-search').val("");
     $('#search-results').text("");
+    $('#results').hide();
 
     let doctorSearch = new DoctorSearch();
     let promise = doctorSearch.getDoctorResults(keyword, name);
@@ -75,6 +76,8 @@ $(document).ready(function() {
             } else {
               $(`#specialty${i}`).html(`<p><span class='strong'>Specialty:</span> ${body.data[i].specialties[0].description}</p>`)}
           }
+          $('#return-number').text(body.data.length);
+          $('#results').show();
         }
 
       //Error Function if promise is not fulfilled
