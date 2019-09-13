@@ -49,7 +49,12 @@ $(document).ready(function() {
 
             $(`#practice${i}`).html(`<p><span class='strong'>Practice Name:</span> ${body.data[i].practices[0].name}</p>`)
 
-            $(`#specialty${i}`).html(`<p><span class='strong'>Specialty:</span> ${body.data[i].specialties[0].description}</p>`)
+            let specialty = body.data[i].specialties[0];
+
+            if (typeof(specialty) == 'undefined') {
+              continue
+            } else {
+            $(`#specialty${i}`).html(`<p><span class='strong'>Specialty:</span> ${body.data[i].specialties[0].description}</p>`)}
 
 
             $(`#address${i}`).html(`<p><span class='strong'>Address:</span> ${body.data[i].practices[0].visit_address.street}, ${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.state}, ${body.data[i].practices[0].visit_address.zip}`);
