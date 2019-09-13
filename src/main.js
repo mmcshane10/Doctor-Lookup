@@ -31,6 +31,7 @@ $(document).ready(function() {
           <div id="collapse${i}" class="collapse show" aria-labelledby="heading${i}" data-parent="#accordion">
           <div class="card-body">
           <div id=image${i} class="image"></div>
+          <div id=specialty${i}></div>
           <div id=practice${i}></div>
           <div id=address${i}></div>
           <div id=phone${i}></div>
@@ -47,11 +48,14 @@ $(document).ready(function() {
             newPatients = "No"
           }
 
+          $(`#name${i}`).html(`${body.data[i].profile.first_name} ${body.data[i].profile.last_name}, ${body.data[i].profile.title}`);
+
           $(`#image${i}`).html(`<img class="card-img-left" src=${body.data[i].profile.image_url} alt="Card image cap">`)
 
           $(`#practice${i}`).html(`<p><span class='strong'>Practice Name:</span> ${body.data[i].practices[0].name}</p>`)
 
-          $(`#name${i}`).html(`${body.data[i].profile.first_name} ${body.data[i].profile.last_name}, ${body.data[i].profile.title}`);
+          $(`#specialty${i}`).html(`<p><span class='strong'>Specialty:</span> ${body.data[i].specialties[0].description}</p>`)
+
 
           $(`#address${i}`).html(`<p><span class='strong'>Address:</span> ${body.data[i].practices[0].visit_address.street}, ${body.data[i].practices[0].visit_address.city}, ${body.data[i].practices[0].visit_address.state}, ${body.data[i].practices[0].visit_address.zip}`);
 
